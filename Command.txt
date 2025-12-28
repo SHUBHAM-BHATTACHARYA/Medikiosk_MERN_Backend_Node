@@ -1,0 +1,4 @@
+G:\MERN\Medical Applications\backend>npm init
+G:\MERN\Medical Applications\backend>npm i express mongoose
+G:\MERN\Medical Applications\backend>npm i --save-dev dotenv nodemon
+G:\MERN\Medical Applications\backend>npm run devStart

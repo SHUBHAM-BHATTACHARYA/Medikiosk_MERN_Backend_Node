@@ -1,4 +1,4 @@
-const Medicine = require('../Models/medicine')
+const Medicine = require('../Models/Medicine')
 
 //Get all Medicines
 const getAllMedicines = async (req, res) =>{
@@ -22,16 +22,10 @@ const getMedicineById = async (req, res) =>{
 
 //Add Medicine
 const addMedicine = async (req, res) =>{
-    const medicine = new Medicine({
-        name: req.body.name,
-        disease: req.body.disease,
-        company: req.body.company,
-        quantity: req.body.quantity,
-        price: req.body.price
-    })
+    const medicine = new Medicine(req.body)
     try{
         await medicine.save()
-        res.status(201).json({ message:'Medicine Added Successfully' })
+        res.status(201).json({ message:'Added Successfully' })
     } catch (err){
         res.status(400).json({ message: err.message })
     }
@@ -40,20 +34,8 @@ const addMedicine = async (req, res) =>{
 //Update Medicine
 const updateMedicineById = async (req, res) =>{
     try{
-        const medicine = await Medicine.findById(req.params.id)
-        if(medicine){
-            medicine.name = req.body.name,
-            medicine.disease = req.body.disease,
-            medicine.company = req.body.company,
-            medicine.quantity = req.body.quantity,
-            medicine.price = req.body.price
-
-            await medicine.save()
-            res.status(201).json({ message:'Medicine Updated Successfully' })
-        }else{
-            res.json({ message: 'Id not exists' })
-        }
-        
+        await Medicine.findByIdAndUpdate(req.params.id, req.body)
+        res.status(201).json({ message:'Updated Successfully' })
     } catch (err){
         res.status(400).json({ message: err.message })
     }
