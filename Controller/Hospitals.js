@@ -53,4 +53,4 @@ const deleteHospitalById = async (req, res) =>{
     }
 }
 
-module.exports = {getAllHospitals, addHospital, updateHospitalById, getHospitalById, deleteHospitalById}
+module.exports = { getAllHospitals, addHospital, updateHospitalById, getHospitalById, deleteHospitalById }
